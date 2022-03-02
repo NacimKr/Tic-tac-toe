@@ -72,6 +72,32 @@ function randomCase(joueur,joueur2,random){
     }
 }
 
+function modale(str){
+    let divGagnant = document.createElement('div');
+    divGagnant.setAttribute('class',"gagnant-alerte");
+
+    let titreGagnant = document.createElement('h3');
+    titreGagnant.innerText = str;
+    titreGagnant.setAttribute('class','titre-gagnant');
+    divGagnant.append(titreGagnant);
+    
+    
+    let butttonRecommencer = document.createElement('button');
+    butttonRecommencer.innerText = "Recommencer la partie";
+    butttonRecommencer.classList.add('button');
+    divGagnant.append(butttonRecommencer);
+    
+    blocJeu.style.display="none";
+    info.style.display="none";
+    
+    butttonRecommencer.addEventListener('click',()=>{
+        document.location.reload();
+    })
+    
+    document.querySelector('.title').style.filter="blur(10px)";
+    document.body.append(divGagnant);
+}
+
 function clickSurCase(){
     
     let indexTab = this.getAttribute('data-index');
@@ -131,7 +157,7 @@ function validationResultats(){
     }
 
     if(pasTerminé){
-        info.innerText = "Le joueur "+ changementJoueur() + " a gagné !";
+        info.innerText = "Le joueur "+ changementJoueur()+ " a gagné !";
         verouillage = false;
         clearTimeout(interval);
         allCase.forEach(cases=>{
@@ -139,38 +165,19 @@ function validationResultats(){
         });
 
         setTimeout(()=>{
-            let divGagnant = document.createElement('div');
-            divGagnant.setAttribute('class',"gagnant-alerte");
-
-            let titreGagnant = document.createElement('h3');
-            titreGagnant.innerText = "Le joueur "+obj.joueur+" gagne cet partie";
-            titreGagnant.setAttribute('class','titre-gagnant');
-            divGagnant.append(titreGagnant);
-            
-            let butttonRecommencer = document.createElement('button');
-            butttonRecommencer.innerText = "Recommencer la partie";
-            butttonRecommencer.classList.add('button');
-            divGagnant.append(butttonRecommencer);
-
-            blocJeu.style.display="none";
-            info.style.display="none";
-            
-            butttonRecommencer.addEventListener('click',()=>{
-                document.location.reload();
-            })
-            
-            document.querySelector('.title').style.filter="blur(10px)";
-            document.body.append(divGagnant);
+            modale("Le joueur "+obj.joueur+" gagne cet partie")
         },600);
-        
+        }
+
         let matchNul = !jeuTableau.includes('');
         if(matchNul){
-            info.innerText =  "<span style='filter:drop-shadow(5px 0px 5px black);>Match nul !</span>";
+            info.innerText = "Match Nul !";
+            setTimeout(()=>{
+                modale("Match Nul !")
+            },600);
             pasTerminé = true;
             return;
         }
-        return;
-    }
 }
 
 //permet de changer de joueur simultanément
