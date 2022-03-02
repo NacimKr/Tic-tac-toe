@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du morpion en Javascript</title>
+    <link rel="shortcut icon" href="icon/icon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&amp;family=Righteous&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-style.css">
+</head>
+<body>
+    <h1 class="title">Jouons au <span class="m">m</span>orpion</h1>
+
+    <div class="select">
+        <label for="joueur">Vous voulez être ?</label>
+        <select name="joueur" id="joueur">
+            <option value="">...</option>
+            <option value="Croix">Croix</option>
+            <option value="Rond">Rond</option>
+        </select>
+    
+        <label for="mode-joueur" id="mode-joueur">Mode de jeu</label>
+        <select name="mode-joueur" id="joueur-mode">
+            <option value="">...</option>
+            <option value="2-joueurs">1 contre 1</option>
+            <option value="ordinateur">Contre un ordinateur</option>
+        </select>
+
+        <input type="button" value="Commencer la partie" class="button">
+    </div>
+
+    <div class="container-grid">
+        <div class="case" data-index="0"></div>
+        <div class="case" data-index="1"></div>
+        <div class="case" data-index="2"></div>
+        <div class="case" data-index="3"></div>
+        <div class="case" data-index="4"></div>
+        <div class="case" data-index="5"></div>
+        <div class="case" data-index="6"></div>
+        <div class="case" data-index="7"></div>
+        <div class="case" data-index="8"></div>
+    </div>
+
+    <h2 class="info"></h2>
+    <script src="main.js"></script>
+</body>
+</html>
