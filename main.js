@@ -165,7 +165,7 @@ function validationResultats(){
         });
 
         setTimeout(()=>{
-            modale("Le joueur "+obj.joueur+" gagne cet partie")
+            modale("Le joueur "+changementJoueur()+" gagne cet partie")
         },600);
         }
 
